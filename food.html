@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Page</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Prevents scroll bars */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f3f3f3; /* Fallback background color */
+        }
+        spline-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Places Spline Viewer behind other content */
+            background: transparent !important; /* Ensures the viewer itself is transparent */
+            pointer-events: auto; /* Allows interaction with the Spline viewer */
+        }
+        .content {
+            position: relative;
+            z-index: 1; /* Ensures content is on top of the Spline viewer */
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            padding: 20px;
+            background-color: #FF69B4;
+            color: white;
+            text-shadow: 1px 1px 2px #FFD700;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .footer {
+            background-color: #FF69B4;
+            padding: 10px;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Spline Viewer as Background -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/UWoeqiir20o49Dah/scene.splinecode"></spline-viewer>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="header">
+            <h1>Food Options</h1>
+        </div>
+
+        <p>Explore our delicious food options for the party!</p>
+
+        <div class="footer">
+            <p>Enjoy the party with great food!</p>
+        </div>
+    </div>
+
+</body>
+</html>
