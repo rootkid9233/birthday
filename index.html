@@ -45,6 +45,20 @@
         .container {
             padding: 20px;
         }
+        .link-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #4B0082;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .link-button:hover {
+            background-color: #FFB6C1; /* Change color on hover */
+        }
         .footer {
             background-color: #FF69B4;
             padding: 10px;
@@ -59,7 +73,7 @@
 <body>
 
     <!-- Spline Viewer as Background -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
     <spline-viewer url="https://prod.spline.design/RY9D3NRKZKTlEKSE/scene.splinecode"></spline-viewer>
 
     <!-- Main Content -->
@@ -70,6 +84,9 @@
 
         <div class="container">
             <p>Welcome to your special Hatchimal-themed birthday page!</p>
+            
+            <!-- Link to Food Page -->
+            <a href="food.html" class="link-button">Food</a>
         </div>
 
         <div class="footer">
