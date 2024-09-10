@@ -12,24 +12,22 @@
             width: 100%;
             height: 100%;
             overflow: hidden; /* Prevents scroll bars */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #4B0082;
+            text-align: center;
         }
-        .background-iframe {
+        spline-viewer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Keeps iframe in the background */
-            border: none;
-            /* Allow pointer events for interactivity */
+            z-index: -1; /* Places Spline Viewer behind other content */
         }
         .content {
             position: relative;
-            z-index: 1; /* Ensures content is on top of the iframe */
+            z-index: 1; /* Ensures content is on top of the Spline viewer */
             padding: 20px;
-            color: #4B0082;
-            text-align: center;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
         }
         .header {
             background-color: #FF69B4;
@@ -51,17 +49,6 @@
             justify-content: center;
             margin-top: 20px;
         }
-        .hatchimal img {
-            width: 200px;
-            height: auto;
-            margin: 10px;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s;
-        }
-        .hatchimal img:hover {
-            transform: scale(1.1);
-        }
         .footer {
             background-color: #FF69B4;
             padding: 10px;
@@ -75,5 +62,27 @@
 </head>
 <body>
 
-    <!-- Background Iframe -->
-    <ifram
+    <!-- Spline Viewer as Background -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/Ijm9SRTeuJTsoZpB/scene.splinecode"></spline-viewer>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="header">
+            <h1>Happy Birthday Liliana!!</h1>
+        </div>
+
+        <div class="container">
+            <p>Welcome to your special Hatchimal-themed birthday page!</p>
+            <div class="hatchimal">
+                <!-- Placeholder images removed; using Spline viewer as the main visual -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Have a magical birthday with Hatchimals!</p>
+        </div>
+    </div>
+
+</body>
+</html>
