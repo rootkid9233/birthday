@@ -1,4 +1,4 @@
-<!DOCTYPE html> #
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,12 +7,26 @@
     <title>Happy Birthday!</title>
     <style>
         body {
-            background: linear-gradient(to right, #FFB6C1, #FFD700);
+            margin: 0;
+            padding: 0;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #4B0082;
             text-align: center;
-            margin: 0;
-            padding: 0;
+            overflow: hidden; /* Prevents scroll bars */
+        }
+        .background-iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Places the iframe behind other content */
+            border: none;
+        }
+        .content {
+            position: relative;
+            z-index: 1; /* Ensures content is on top */
+            padding: 20px;
         }
         .header {
             background-color: #FF69B4;
@@ -54,36 +68,33 @@
             width: 100%;
             bottom: 0;
         }
-        .banner {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <div class="header">
-        <h1>Happy Birthday Liliana!!</h1>
-    </div>
-
-    <!-- Banner Section -->
-    <div class="banner">
-        <img src="path/to/your/image.png" alt="Hatchimals Banner">
-    </div>
+    <!-- Background Iframe -->
+    <iframe class="background-iframe" src="https://my.spline.design/progressiverotationwithmousepositon-c3109d0dc98cff0df5a2d17f4e8a9b48/" frameborder="0"></iframe>
 
     <!-- Main Content -->
-    <div class="container">
-        <p>Welcome to your special Hatchimal-themed birthday page!</p>
-        <div class="hatchimal">
-            <!-- Add Hatchimal images here -->
-            <img src="https://via.placeholder.com/200x200.png?text=Hatchimal+
+    <div class="content">
+        <div class="header">
+            <h1>Happy Birthday Liliana!!</h1>
+        </div>
+
+        <div class="container">
+            <p>Welcome to your special Hatchimal-themed birthday page!</p>
+            <div class="hatchimal">
+                <!-- Add Hatchimal images here -->
+                <img src="https://via.placeholder.com/200x200.png?text=Hatchimal+1" alt="Hatchimal 1">
+                <img src="https://via.placeholder.com/200x200.png?text=Hatchimal+2" alt="Hatchimal 2">
+                <img src="https://via.placeholder.com/200x200.png?text=Hatchimal 3" alt="Hatchimal 3">
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Have a magical birthday with Hatchimals!</p>
+        </div>
+    </div>
+
+</body>
+</html>
