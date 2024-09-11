@@ -33,7 +33,7 @@
         }
         .content {
             position: relative;
-            z-index: 1;
+            z-index: 1; /* Ensures content is on top of the Spline viewer */
             padding: 20px;
         }
         .header {
@@ -68,7 +68,7 @@
 <body>
 
     <!-- Spline Viewer as Background -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
     <div class="spline-container">
         <spline-viewer url="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode"></spline-viewer>
     </div>
