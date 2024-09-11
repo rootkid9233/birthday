@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Party Details</title>
+    <title>Happy Birthday!</title>
     <style>
         body, html {
             margin: 0;
@@ -12,10 +12,9 @@
             width: 100%;
             height: 100%;
             overflow: hidden; /* Prevents scroll bars */
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #4B0082;
             text-align: center;
-            background: #f3f3f3;
-            color: #333;
         }
         .spline-container {
             position: fixed;
@@ -24,83 +23,136 @@
             width: 100%;
             height: 100%;
             z-index: -1; /* Keeps the Spline viewer behind other content */
-            background: transparent !important;
-            pointer-events: auto; /* Allows interaction with the Spline viewer */
+            transition: transform 0.3s ease;
         }
         spline-viewer {
-            display: block;
             width: 100%;
             height: 100%;
-            background: transparent; /* Ensures background is transparent */
+            background: transparent !important;
+            pointer-events: auto; /* Allows interaction with the Spline viewer */
         }
         .content {
             position: relative;
             z-index: 1; /* Ensures content is on top of the Spline viewer */
             padding: 20px;
-            color: #4B0082;
-            text-align: center;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
         }
         .header {
             background-color: #FF69B4;
             padding: 20px;
             border-bottom: 5px solid #FFD700;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin: 0;
             color: white;
             text-shadow: 2px 2px 8px #FFD700;
         }
-        .header h1 {
-            margin: 0;
-        }
-        .details {
-            background: white;
+        .container {
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .link-button {
             display: inline-block;
-            text-align: left;
             margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #4B0082;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .link-button:hover {
+            background-color: #FFB6C1;
         }
         .footer {
             background-color: #FF69B4;
             padding: 10px;
+            border-top: 5px solid #FFD700;
             color: white;
             position: fixed;
             width: 100%;
             bottom: 0;
+        }
+
+        /* Floating Eggs Animation */
+        .egg {
+            position: fixed;
+            bottom: -50px; /* Starts off-screen */
+            width: 30px;
+            height: 40px;
+            background-color: #FFB6C1;
+            border-radius: 50% 50% 45% 45%;
+            animation: floatEggs 5s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes floatEggs {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-300px) scale(1.2);
+            }
+            80% {
+                transform: translateY(-600px) scale(0.8);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-800px) scale(0.5);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
 
     <!-- Spline Viewer as Background -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
     <div class="spline-container">
-        <spline-viewer id="splineViewer" url="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode"></spline-viewer>
+        <spline-viewer url="https://prod.spline.design/RY9D3NRKZKTlEKSE/scene.splinecode"></spline-viewer>
     </div>
+
+    <!-- Floating Eggs -->
+    <div class="egg"></div>
+    <div class="egg"></div>
+    <div class="egg"></div>
+    <div class="egg"></div>
+    <div class="egg"></div>
 
     <!-- Main Content -->
     <div class="content">
         <div class="header">
-            <h1>Party Details</h1>
+            <h1>Happy Birthday Liliana!!</h1>
         </div>
 
-        <div class="details">
-            <h2>Time and Location</h2>
-            <p><strong>Time:</strong> Saturday, 2:00 PM - 5:00 PM</p>
-            <p><strong>Location:</strong> 1234 Celebration Lane, Party City</p>
-
-            <h2>Food</h2>
-            <p>We will have a variety of delicious snacks and treats, including:</p>
-            <ul>
-                <li>Pizza</li>
-                <li>Fruit Platter</li>
-                <li>Chips and Dip</li>
-                <li>Birthday Cake</li>
-            </ul>
+        <div class="container">
+            <p>Welcome to your special Hatchimal-themed birthday page!</p>
+            
+            <!-- Link to Details Page -->
+            <a href="details.html" class="link-button">Details</a>
         </div>
 
         <div class="footer">
-            <p>Can't wait to see you there!</p>
+            <p>Have a magical birthday with Hatchimals!</p>
         </div>
     </div>
 
-    <!-- Spline Viewer Script -->
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop muted>
+        <source src="path/to/your/specific-song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- JavaScript to Unmute Audio on Interaction -->
+    <script>
+        // Unmute the audio when the user interacts with the page
+        window.addEventListener('click', function() {
+            const audio = document.getElementById('background-music');
+            audio.muted = false; // Unmute the audio
+            audio.play(); // Play the audio
+        }, { once: true }); // Only run once
+    </script>
+
+</body>
+</html>
