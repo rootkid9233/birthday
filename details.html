@@ -12,19 +12,30 @@
             width: 100%;
             height: 100%;
             overflow: hidden; /* Prevents scroll bars */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f3f3f3;
+            color: #333;
         }
-        .background-iframe {
+        .spline-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Keeps the iframe behind the content */
-            border: none; /* Removes border from the iframe */
+            z-index: -1; /* Keeps the Spline viewer behind other content */
+            background: transparent !important;
+            pointer-events: auto; /* Allows interaction with the Spline viewer */
+        }
+        spline-viewer {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: transparent; /* Ensures background is transparent */
         }
         .content {
             position: relative;
-            z-index: 1; /* Ensures content is on top of the iframe */
+            z-index: 1; /* Ensures content is on top of the Spline viewer */
             padding: 20px;
             color: #4B0082;
             text-align: center;
@@ -61,8 +72,11 @@
 </head>
 <body>
 
-    <!-- Background Iframe for Spline Embed -->
-    <iframe class="background-iframe" src="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode" frameborder="0"></iframe>
+    <!-- Spline Viewer as Background -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
+    <div class="spline-container">
+        <spline-viewer url="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode"></spline-viewer>
+    </div>
 
     <!-- Main Content -->
     <div class="content">
