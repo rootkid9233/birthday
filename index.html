@@ -16,13 +16,20 @@
             color: #4B0082;
             text-align: center;
         }
-        spline-viewer {
+        .spline-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Places Spline Viewer behind other content */
+            z-index: -1; /* Keeps the Spline viewer behind other content */
+            transition: transform 0.3s ease;
+        }
+        spline-viewer {
+            width: 100%;
+            height: 100%;
+            background: transparent !important;
+            pointer-events: auto; /* Allows interaction with the Spline viewer */
         }
         .content {
             position: relative;
@@ -43,11 +50,20 @@
         .container {
             padding: 20px;
         }
-        .hatchimal {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .link-button {
+            display: inline-block;
             margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #4B0082;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-right: 10px; /* Add some space between buttons */
+        }
+        .link-button:hover {
+            background-color: #FFB6C1;
         }
         .footer {
             background-color: #FF69B4;
@@ -58,13 +74,45 @@
             width: 100%;
             bottom: 0;
         }
+
+        /* Floating Eggs Animation */
+        .egg {
+            position: fixed;
+            bottom: -50px; /* Starts off-screen */
+            width: 30px;
+            height: 40px;
+            background-color: #FFB6C1;
+            border-radius: 50% 50% 45% 45%;
+            animation: floatEggs 5s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes floatEggs {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-300px) scale(1.2);
+            }
+            80% {
+                transform: translateY(-600px) scale(0.8);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-800px) scale(0.5);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Spline Viewer as Background -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
-    <spline-viewer url="https://prod.spline.design/t913zFerNxcGnkmH/scene.splinecode"></spline-viewer>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+    <div class="spline-container">
+        <spline-viewer url="https://prod.spline.design/RY9D3NRKZKTlEKSE/scene.splinecode"></spline-viewer>
+    </div>
 
     <!-- Main Content -->
     <div class="content">
@@ -74,15 +122,32 @@
 
         <div class="container">
             <p>Welcome to your special Hatchimal-themed birthday page!</p>
-            <div class="hatchimal">
-                <!-- Placeholder images removed; using Spline viewer as the main visual -->
-            </div>
+            
+            <!-- Link to Details Page -->
+            <a href="details.html" class="link-button">Details</a>
+            <!-- Link to Wishlist Page -->
+            <a href="links.html" class="link-button">Wishlist</a>
+            <!-- Link to RSVP Page -->
+            <a href="rsvp.html" class="link-button">RSVP</a>
         </div>
 
         <div class="footer">
             <p>Have a magical birthday with Hatchimals!</p>
         </div>
     </div>
+
+    <!-- JavaScript to Create 100 Floating Eggs -->
+    <script>
+        const colors = ['#FFB6C1', '#FFD700', '#E6E0F8', '#ADD8E6', '#98FB98']; // Pastel colors
+        for (let i = 0; i < 100; i++) {
+            const egg = document.createElement('div');
+            egg.classList.add('egg');
+            egg.style.left = Math.random() * 100 + '%'; // Random horizontal position
+            egg.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; // Random color
+            egg.style.animationDelay = Math.random() * 3 + 's'; // Random delay up to 3 seconds
+            document.body.appendChild(egg);
+        }
+    </script>
 
 </body>
 </html>
