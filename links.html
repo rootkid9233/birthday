@@ -17,25 +17,18 @@
             background: #f3f3f3;
             color: #333;
         }
-        .spline-container {
+        .background-iframe {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Keeps the Spline viewer behind other content */
-            background: transparent !important;
-            pointer-events: auto; /* Allows interaction with the Spline viewer */
-        }
-        spline-viewer {
-            display: block;
-            width: 100%;
-            height: 100%;
-            background: transparent; /* Ensures background is transparent */
+            z-index: -1; /* Keeps the iframe behind the content */
+            border: none; /* Removes border from the iframe */
         }
         .content {
             position: relative;
-            z-index: 1; /* Ensures content is on top of the Spline viewer */
+            z-index: 1; /* Ensures content is on top of the iframe */
             padding: 20px;
         }
         .header {
@@ -52,11 +45,8 @@
 </head>
 <body>
 
-    <!-- Spline Viewer as Background -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
-    <div class="spline-container">
-        <spline-viewer url="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode"></spline-viewer>
-    </div>
+    <!-- Background Iframe for Spline Embed -->
+    <iframe class="background-iframe" src="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode" frameborder="0"></iframe>
 
     <!-- Main Content -->
     <div class="content">
