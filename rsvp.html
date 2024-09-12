@@ -17,10 +17,43 @@
             background: #f3f3f3;
             color: #333;
         }
-        .spline-container {
+        .background-iframe {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Keeps the S
+            z-index: -1; /* Keeps the iframe behind the content */
+            border: none; /* Removes border from the iframe */
+        }
+        .content {
+            position: relative;
+            z-index: 1; /* Ensures content is on top of the iframe */
+            padding: 20px;
+        }
+        .header {
+            padding: 20px;
+            background-color: #FF69B4;
+            color: white;
+            text-shadow: 1px 1px 2px #FFD700;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Iframe for Spline Embed -->
+    <iframe class="background-iframe" src="https://prod.spline.design/t913zFerNxcGnkmH/scene.splinecode" frameborder="0"></iframe>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="header">
+            <h1>RSVP</h1>
+        </div>
+    </div>
+
+</body>
+</html>
