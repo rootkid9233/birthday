@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSVP</title>
+    <title>Happy Birthday!</title>
     <style>
         body, html {
             margin: 0;
@@ -12,26 +12,17 @@
             width: 100%;
             height: 100%;
             overflow: hidden; /* Prevents scroll bars */
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #4B0082;
             text-align: center;
-            background: #f3f3f3;
-            color: #333;
         }
-        .spline-container {
+        spline-viewer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Keeps the Spline viewer behind other content */
-            background: transparent !important;
-            pointer-events: auto; /* Allows interaction with the Spline viewer */
-        }
-        spline-viewer {
-            display: block;
-            width: 100%;
-            height: 100%;
-            background: transparent; /* Ensures background is transparent */
+            z-index: -1; /* Places Spline Viewer behind other content */
         }
         .content {
             position: relative;
@@ -39,14 +30,33 @@
             padding: 20px;
         }
         .header {
-            padding: 20px;
             background-color: #FF69B4;
-            color: white;
-            text-shadow: 1px 1px 2px #FFD700;
-            margin-bottom: 20px;
+            padding: 20px;
+            border-bottom: 5px solid #FFD700;
         }
         .header h1 {
+            font-size: 3em;
             margin: 0;
+            color: white;
+            text-shadow: 2px 2px 8px #FFD700;
+        }
+        .container {
+            padding: 20px;
+        }
+        .hatchimal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .footer {
+            background-color: #FF69B4;
+            padding: 10px;
+            border-top: 5px solid #FFD700;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
@@ -54,14 +64,23 @@
 
     <!-- Spline Viewer as Background -->
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
-    <div class="spline-container">
-        <spline-viewer url="https://prod.spline.design/1GCDUQoSlM44bJzv/scene.splinecode"></spline-viewer>
-    </div>
+    <spline-viewer url="https://prod.spline.design/Ijm9SRTeuJTsoZpB/scene.splinecode"></spline-viewer>
 
     <!-- Main Content -->
     <div class="content">
         <div class="header">
-            <h1>RSVP</h1>
+            <h1>Happy Birthday Liliana!!</h1>
+        </div>
+
+        <div class="container">
+            <p>Welcome to your special Hatchimal-themed birthday page!</p>
+            <div class="hatchimal">
+                <!-- Placeholder images removed; using Spline viewer as the main visual -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Have a magical birthday with Hatchimals!</p>
         </div>
     </div>
 
