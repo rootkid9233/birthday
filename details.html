@@ -15,6 +15,7 @@
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #4B0082;
             text-align: center;
+            background: #f3f3f3;
         }
         .spline-container {
             position: fixed;
@@ -30,7 +31,6 @@
             width: 100%;
             height: 100%;
             background: transparent !important;
-            pointer-events: auto; /* Allows interaction with the Spline viewer */
         }
         .content {
             position: relative;
@@ -41,23 +41,25 @@
             font-family: 'Comic Sans MS', cursive, sans-serif;
         }
         .header {
-            background-color: #FF69B4;
             padding: 20px;
-            border-bottom: 5px solid #FFD700;
+            background-color: #FF69B4;
             color: white;
-            text-shadow: 2px 2px 8px #FFD700;
+            text-shadow: 1px 1px 2px #FFD700;
+            margin-bottom: 20px;
         }
         .header h1 {
             margin: 0;
         }
         .details {
-            background: white;
+            background: #FFEBE8; /* Pastel color */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: inline-block;
             text-align: left;
             margin-top: 20px;
+            max-width: 400px; /* Shrinks the box */
+            margin: auto; /* Centers the box horizontally */
         }
         .footer {
             background-color: #FF69B4;
@@ -67,44 +69,26 @@
             width: 100%;
             bottom: 0;
         }
-
-        /* Floating Eggs Animation */
-        .egg {
-            position: fixed;
-            bottom: -50px; /* Starts off-screen */
-            width: 30px;
-            height: 40px;
-            background-color: #FFB6C1;
-            border-radius: 50% 50% 45% 45%;
-            animation: floatEggs 5s ease-in-out forwards;
-            opacity: 0;
+        .map-links {
+            margin-top: 10px;
         }
-
-        @keyframes floatEggs {
-            0% {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-300px) scale(1.2);
-            }
-            80% {
-                transform: translateY(-600px) scale(0.8);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-800px) scale(0.5);
-                opacity: 0;
-            }
+        .map-links a {
+            color: #4B0082;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .map-links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <!-- Spline Viewer as Background -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
     <div class="spline-container">
-        <spline-viewer url="https://prod.spline.design/RY9D3NRKZKTlEKSE/scene.splinecode"></spline-viewer>
+        <spline-viewer url="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode"></spline-viewer>
     </div>
 
     <!-- Main Content -->
@@ -115,13 +99,16 @@
 
         <div class="details">
             <h2>Time and Location</h2>
-            <p><strong>Time:</strong> Saturday, 2:00 PM - 5:00 PM</p>
-            <p><strong>Location:</strong> 1234 Celebration Lane, Party City</p>
-
+            <p><strong>Time:</strong> 6:00 PM - 8:00 PM</p>
+            <p><strong>Location:</strong> 273 Woodbury Ave, Martinsburg, WV 25404</p>
+            <div class="map-links">
+                <a href="https://maps.apple.com/?q=273+Woodbury+Ave,+Martinsburg,+WV+25404" target="_blank">Apple Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=273+Woodbury+Ave,+Martinsburg,+WV+25404" target="_blank">Google Maps</a>
+            </div>
             <h2>Food</h2>
             <p>We will have a variety of delicious snacks and treats, including:</p>
             <ul>
-                <li>Pizza</li>
+                <li>Chicken Salad Chick</li>
                 <li>Fruit Platter</li>
                 <li>Chips and Dip</li>
                 <li>Birthday Cake</li>
@@ -132,19 +119,6 @@
             <p>Can't wait to see you there!</p>
         </div>
     </div>
-
-    <!-- JavaScript to Create 100 Floating Eggs -->
-    <script>
-        const colors = ['#FFB6C1', '#FFD700', '#E6E0F8', '#ADD8E6', '#98FB98']; // Pastel colors
-        for (let i = 0; i < 100; i++) {
-            const egg = document.createElement('div');
-            egg.classList.add('egg');
-            egg.style.left = Math.random() * 100 + '%'; // Random horizontal position
-            egg.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; // Random color
-            egg.style.animationDelay = Math.random() * 3 + 's'; // Random delay up to 3 seconds
-            document.body.appendChild(egg);
-        }
-    </script>
 
 </body>
 </html>
