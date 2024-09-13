@@ -97,18 +97,18 @@
         <div class="form-container" id="form-container">
             <div id="step1">
                 <input type="text" id="name" placeholder="Enter your name" required>
-                <button onclick="nextStep('step1', 'step2')">Next</button>
+                <button type="button" onclick="nextStep('step1', 'step2')">Next</button>
             </div>
 
             <div id="step2" style="display: none;">
-                <input type="number" id="kids" placeholder="How many kids are coming?" required>
-                <button onclick="nextStep('step2', 'step3')">Next</button>
+                <input type="number" id="kids" placeholder="How many kids?" required>
+                <button type="button" onclick="nextStep('step2', 'step3')">Next</button>
             </div>
 
             <div id="step3" style="display: none;">
                 <input type="text" id="order" placeholder="Type of Chicken Salad Chick" required>
                 <a href="https://www.chickensaladchick.com/menu/restaurant-menu/chicken-salad/" target="_blank">See Menu</a>
-                <button onclick="submitForm()">Submit</button>
+                <button type="button" onclick="submitForm()">Submit</button>
             </div>
         </div>
 
@@ -125,9 +125,41 @@
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            emailjs.init("service_lbur7sw"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+            emailjs.init("YOUR_USER_ID"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
         })();
         
         function nextStep(current, next) {
             document.getElementById(current).style.display = 'none';
-            document.getElementByI
+            document.getElementById(next).style.display = 'block';
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const kids = document.getElementById('kids').value;
+            const order = document.getElementById('order').value;
+
+            if (!name || !kids || !order) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const templateParams = {
+                name: name,
+                kids: kids,
+                order: order,
+            };
+
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    document.getElementById('form-container').style.display = 'none';
+                    document.getElementById('thank-you-message').style.display = 'block';
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('An error occurred while sending your RSVP. Please try again.');
+                });
+        }
+    </script>
+
+</body>
+</html>
