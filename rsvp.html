@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>RSVP</title>
     <style>
         body, html {
             margin: 0;
@@ -40,14 +40,30 @@
             color: white;
             text-shadow: 2px 2px 8px #FFD700;
         }
-        .container {
+        .form-container {
+            background: white;
             padding: 20px;
-        }
-        .hatchimal {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
             margin-top: 20px;
+        }
+        .form-container input, .form-container button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #FFD700;
+        }
+        .form-container button {
+            background-color: #FF69B4;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        .form-container button:hover {
+            background-color: #FFB6C1;
         }
         .footer {
             background-color: #FF69B4;
@@ -64,25 +80,57 @@
 
     <!-- Spline Viewer as Background -->
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
-    <spline-viewer url="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode"></spline-viewer>
+    <spline-viewer url="https://prod.spline.design/t913zFerNxcGnkmH/scene.splinecode"></spline-viewer>
 
     <!-- Main Content -->
     <div class="content">
         <div class="header">
-            <h1>Happy Birthday Liliana!!</h1>
+            <h1>RSVP</h1>
         </div>
 
-        <div class="container">
-            <p>Welcome to your special Hatchimal-themed birthday page!</p>
-            <div class="hatchimal">
-                <!-- Placeholder images removed; using Spline viewer as the main visual -->
+        <div class="form-container">
+            <div id="step1">
+                <input type="text" id="name" placeholder="Enter your name" required>
+                <button onclick="nextStep('step1', 'step2')">Next</button>
+            </div>
+
+            <div id="step2" style="display: none;">
+                <input type="number" id="kids" placeholder="How many kids?" required>
+                <button onclick="nextStep('step2', 'step3')">Next</button>
+            </div>
+
+            <div id="step3" style="display: none;">
+                <input type="text" id="order" placeholder="Type of Chicken Salad Chick" required>
+                <a href="https://www.chickensaladchick.com/menu/restaurant-menu/chicken-salad/" target="_blank">See Menu</a>
+                <button onclick="submitForm()">Submit</button>
             </div>
         </div>
 
         <div class="footer">
-            <p>Have a magical birthday with Hatchimals!</p>
+            <p>RSVP for a delightful time with Hatchimals!</p>
         </div>
     </div>
+
+    <script>
+        function nextStep(current, next) {
+            document.getElementById(current).style.display = 'none';
+            document.getElementById(next).style.display = 'block';
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const kids = document.getElementById('kids').value;
+            const order = document.getElementById('order').value;
+
+            const emailBody = `
+                Name: ${name}%0D%0A
+                Number of Kids: ${kids}%0D%0A
+                Chicken Salad Chick Order: ${order}
+            `;
+
+            window.location.href = `mailto:jwade1994@icloud.com?subject=RSVP&body=${emailBody}`;
+        }
+    </script>
 
 </body>
 </html>
