@@ -74,6 +74,12 @@
             width: 100%;
             bottom: 0;
         }
+        .thank-you-message {
+            display: none;
+            color: #FF69B4;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -88,7 +94,7 @@
             <h1>RSVP</h1>
         </div>
 
-        <div class="form-container">
+        <div class="form-container" id="form-container">
             <div id="step1">
                 <input type="text" id="name" placeholder="Enter your name" required>
                 <button onclick="nextStep('step1', 'step2')">Next</button>
@@ -106,31 +112,22 @@
             </div>
         </div>
 
+        <div class="thank-you-message" id="thank-you-message">
+            <p>Thanks!!! You're very special to us!</p>
+        </div>
+
         <div class="footer">
             <p>RSVP for a delightful time with Hatchimals!</p>
         </div>
     </div>
 
-    <script>
+    <!-- Include EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_USER_ID"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+        })();
+        
         function nextStep(current, next) {
             document.getElementById(current).style.display = 'none';
-            document.getElementById(next).style.display = 'block';
-        }
-
-        function submitForm() {
-            const name = document.getElementById('name').value;
-            const kids = document.getElementById('kids').value;
-            const order = document.getElementById('order').value;
-
-            const emailBody = `
-                Name: ${name}%0D%0A
-                Number of Kids: ${kids}%0D%0A
-                Chicken Salad Chick Order: ${order}
-            `;
-
-            window.location.href = `mailto:jwade1994@icloud.com?subject=RSVP&body=${emailBody}`;
-        }
-    </script>
-
-</body>
-</html>
+            document.getElementByI
