@@ -101,7 +101,7 @@
             </div>
 
             <div id="step2" style="display: none;">
-                <input type="number" id="kids" placeholder="How many kids?" required>
+                <input type="number" id="kids" placeholder="How many kids are coming?" required>
                 <button onclick="nextStep('step2', 'step3')">Next</button>
             </div>
 
@@ -125,7 +125,7 @@
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            emailjs.init("YOUR_USER_ID"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+            emailjs.init("service_lbur7sw"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
         })();
         
         function nextStep(current, next) {
