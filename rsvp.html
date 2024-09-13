@@ -125,7 +125,7 @@
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            emailjs.init("YOUR_USER_ID"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+            emailjs.init("Jackie Jerome Wade Jr"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
         })();
         
         function nextStep(current, next) {
@@ -149,7 +149,7 @@
                 order: order,
             };
 
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            emailjs.send('service_lbur7sw', 'template_3aiac0h', templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     document.getElementById('form-container').style.display = 'none';
