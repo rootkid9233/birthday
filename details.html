@@ -15,7 +15,9 @@
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #4B0082;
             text-align: center;
-            background: #f3f3f3;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Soft pastel gradient */
+            background-size: cover; /* Ensures the background covers the whole page */
+            position: relative;
         }
         .spline-container {
             position: fixed;
@@ -46,12 +48,13 @@
             color: white;
             text-shadow: 1px 1px 2px #FFD700;
             margin-bottom: 20px;
+            border-radius: 10px;
         }
         .header h1 {
             margin: 0;
         }
         .details {
-            background: white; /* Original background color */
+            background: rgba(255, 255, 255, 0.8); /* Adds a slight transparency */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -66,6 +69,8 @@
             position: fixed;
             width: 100%;
             bottom: 0;
+            border-top: 5px solid #FFD700;
+            border-radius: 10px;
         }
         .map-links {
             margin-top: 10px;
@@ -79,6 +84,17 @@
         .map-links a:hover {
             text-decoration: underline;
         }
+        /* Add soft sparkles for a magical feel */
+        .sparkles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
     </style>
 </head>
 <body>
@@ -90,6 +106,9 @@
     <div class="spline-container">
         <spline-viewer url="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode"></spline-viewer>
     </div>
+
+    <!-- Soft Sparkle Overlay -->
+    <div class="sparkles"></div>
 
     <!-- Main Content -->
     <div class="content">
