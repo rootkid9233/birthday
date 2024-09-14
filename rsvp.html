@@ -102,12 +102,6 @@
 
             <div id="step2" style="display: none;">
                 <input type="number" id="kids" placeholder="How many kids?" required>
-                <button type="button" onclick="nextStep('step2', 'step3')">Next</button>
-            </div>
-
-            <div id="step3" style="display: none;">
-                <input type="text" id="order" placeholder="Type of Chicken Salad Chick" required>
-                <a href="https://www.chickensaladchick.com/menu/restaurant-menu/chicken-salad/" target="_blank">See Menu</a>
                 <button type="button" onclick="submitForm()">Submit</button>
             </div>
         </div>
@@ -123,11 +117,13 @@
 
     <!-- Include EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <!-- JavaScript Code for EmailJS and Form Handling -->
     <script type="text/javascript">
         (function(){
-    emailjs.init("9IeNnt212Lj92pZXe"); // Use your API key (User ID) here
-    emailjs.debug = true; // Enable debug mode for more detailed logs
-})();
+            emailjs.init("9IeNnt212Lj92pZXe"); // Use your API key (User ID) here
+            emailjs.debug = true; // Enable debug mode for more detailed logs
+        })();
         
         function nextStep(current, next) {
             document.getElementById(current).style.display = 'none';
@@ -137,20 +133,18 @@
         function submitForm() {
             const name = document.getElementById('name').value;
             const kids = document.getElementById('kids').value;
-            const order = document.getElementById('order').value;
 
-            if (!name || !kids || !order) {
+            if (!name || !kids) {
                 alert('Please fill in all fields.');
                 return;
             }
 
             const templateParams = {
                 name: name,
-                kids: kids,
-                order: order,
+                kids: kids
             };
 
-            emailjs.send('service_lbur7sw', 'template_3aiac0h', params')
+            emailjs.send('service_lbur7sw', 'template_3aiac0h', templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     document.getElementById('form-container').style.display = 'none';
