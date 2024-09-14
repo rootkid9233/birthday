@@ -115,16 +115,8 @@
         </div>
     </div>
 
-    <!-- Include EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-
-    <!-- JavaScript Code for EmailJS and Form Handling -->
+    <!-- JavaScript Code for ClickSend SMS -->
     <script type="text/javascript">
-        (function(){
-            emailjs.init("9IeNnt212Lj92pZXe"); // Use your API key (User ID) here
-            emailjs.debug = true; // Enable debug mode for more detailed logs
-        })();
-        
         function nextStep(current, next) {
             document.getElementById(current).style.display = 'none';
             document.getElementById(next).style.display = 'block';
@@ -139,20 +131,39 @@
                 return;
             }
 
-            const templateParams = {
-                name: name,
-                kids: kids
+            const messageBody = `New RSVP Received: Name - ${name}, Number of Kids - ${kids}`;
+
+            // ClickSend API credentials
+            const url = 'https://rest.clicksend.com/v3/sms/send';
+            const data = {
+                messages: [
+                    {
+                        source: 'javascript',
+                        from: 'jackie', // Optional: Customize the sender name/number
+                        body: messageBody,
+                        to: '3302576255' // Replace with your phone number
+                    }
+                ]
             };
 
-            emailjs.send('service_lbur7sw', 'template_3aiac0h', templateParams)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    document.getElementById('form-container').style.display = 'none';
-                    document.getElementById('thank-you-message').style.display = 'block';
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    alert('An error occurred while sending your RSVP. Please try again.');
-                });
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('jwade1994@icloud.com:DA077A8A-5FBE-ABD4-F28C-F6CAD2C66439'), // Replace with your ClickSend username and API key
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('SMS sent successfully:', data);
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('thank-you-message').style.display = 'block';
+            })
+            .catch((error) => {
+                console.error('Error sending SMS:', error);
+                alert('An error occurred while sending your RSVP. Please try again.');
+            });
         }
     </script>
 
