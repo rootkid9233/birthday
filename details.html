@@ -24,13 +24,12 @@
             width: 100%;
             height: 100%;
             z-index: -1; /* Keeps the Spline viewer behind other content */
-            background: transparent !important;
-            pointer-events: auto; /* Allows interaction with the Spline viewer */
+            pointer-events: none; /* Prevents interaction issues */
         }
         spline-viewer {
             width: 100%;
             height: 100%;
-            background: transparent !important;
+            display: block; /* Ensures the viewer is displayed as a block */
         }
         .content {
             position: relative;
