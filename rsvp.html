@@ -150,7 +150,7 @@
                 order: order,
             };
 
-            emailjs.send('service_lbur7sw', 'template_3aiac0h')
+            emailjs.send('service_lbur7sw', 'template_3aiac0h', params')
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     document.getElementById('form-container').style.display = 'none';
