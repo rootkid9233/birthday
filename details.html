@@ -16,7 +16,7 @@
             color: #4B0082;
             text-align: center;
         }
-        spline-viewer {
+        .spline-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -24,10 +24,16 @@
             height: 100%;
             z-index: -1; /* Places Spline Viewer behind other content */
         }
+        spline-viewer {
+            width: 100%;
+            height: 100%;
+        }
         .content {
             position: relative;
             z-index: 1; /* Ensures content is on top of the Spline viewer */
             padding: 20px;
+            color: #4B0082;
+            text-align: center;
         }
         .header {
             background-color: #FF69B4;
@@ -76,9 +82,40 @@
 <body>
 
     <!-- Spline Viewer as Background -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
-    <spline-viewer url="https://prod.spline.design/t913zFerNxcGnkmH/scene.splinecode"></spline-viewer>
+    <div class="spline-container">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/t913zFerNxcGnkmH/scene.splinecode"></spline-viewer>
+    </div>
 
     <!-- Main Content -->
     <div class="content">
-        <div class="
+        <div class="header">
+            <h1>Party Details</h1>
+        </div>
+
+        <div class="details">
+            <h2>Date and Time</h2>
+            <p><strong>Date and Time:</strong> 10/12/2024, 6:00 PM - 8:00 PM</p>
+            <h2>Location</h2>
+            <p><strong>Location:</strong> 273 Woodbury Ave, Martinsburg, WV 25404</p>
+            <div class="map-links">
+                <a href="https://maps.apple.com/?address=273%20Woodbury%20Ave,%20Martinsburg,%20WV%2025404,%20United%20States&auid=14771201852086930263&ll=39.446171,-77.966925&lsp=9902&q=273%20Woodbury%20Ave&_ext=ChgKBQgEEOIBCgQIBRADCgQIBhBvCgQIUhAECgQIVRAOCgQIWRABCgUIpAEQARImKYfTE0lgEFNANXxVn3VCZyOAZgCxpcRgn80kqO1nTCZyQFAE" target="_blank">Apple Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=273+Woodbury+Ave,+Martinsburg,+WV+25404" target="_blank">Google Maps</a>
+            </div>
+            <h2>Food</h2>
+            <p>We will have a variety of delicious snacks and treats, including:</p>
+            <ul>
+                <li>Chicken Salad Chick</li>
+                <li>Fruit Platter</li>
+                <li>Chips and Dip</li>
+                <li>Birthday Cake</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>Can't wait to see you there!</p>
+        </div>
+    </div>
+
+</body>
+</html>
