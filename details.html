@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width= device-width, initial-scale=1.0">
     <title>Party Details</title>
     <style>
         body, html {
@@ -11,12 +11,12 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Prevents scroll bars */
+            overflow: hidden;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #4B0082;
             text-align: center;
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Soft pastel gradient */
-            background-size: cover; /* Ensures the background covers the whole page */
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            background-size: cover;
             position: relative;
         }
         .spline-container {
@@ -25,22 +25,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Keeps the Spline viewer behind other content */
+            z-index: -1;
         }
         spline-viewer {
             width: 100%;
             height: 100%;
-            display: block; /* Ensures the viewer is displayed properly */
+            display: block;
             background: transparent !important;
-            pointer-events: none; /* Prevents interaction issues */
+            pointer-events: none;
         }
         .content {
             position: relative;
-            z-index: 1; /* Ensures content is on top of the Spline viewer */
+            z-index: 1;
             padding: 20px;
             color: #4B0082;
             text-align: center;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
         }
         .header {
             padding: 20px;
@@ -54,7 +53,7 @@
             margin: 0;
         }
         .details {
-            background: rgba(255, 255, 255, 0.8); /* Adds a slight transparency */
+            background: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -84,7 +83,6 @@
         .map-links a:hover {
             text-decoration: underline;
         }
-        /* Add soft sparkles for a magical feel */
         .sparkles {
             position: absolute;
             top: 0;
@@ -95,28 +93,45 @@
             opacity: 0.3;
             z-index: 0;
         }
+        .egg-button {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            width: 50px;
+            height: 50px;
+            background: url('https://path-to-your-cute-egg-image.png') no-repeat center;
+            background-size: contain;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .egg {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('https://path-to-pastel-egg-image.png') no-repeat center;
+            background-size: contain;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Include Spline Viewer Script -->
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
 
-    <!-- Spline Viewer as Background -->
     <div class="spline-container">
         <spline-viewer url="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode"></spline-viewer>
     </div>
 
-    <!-- Soft Sparkle Overlay -->
     <div class="sparkles"></div>
 
-    <!-- Main Content -->
     <div class="content">
         <div class="header">
             <h1>Party Details</h1>
         </div>
 
         <div class="details">
+            <h2>Date</h2>
+            <p><strong>Date:</strong> 10/12/2024</p>
             <h2>Time and Location</h2>
             <p><strong>Time:</strong> 6:00 PM - 8:00 PM</p>
             <p><strong>Location:</strong> 273 Woodbury Ave, Martinsburg, WV 25404</p>
@@ -138,6 +153,32 @@
             <p>Can't wait to see you there!</p>
         </div>
     </div>
+
+    <!-- Interactive Egg Button -->
+    <div class="egg-button" onclick="shootEggs()"></div>
+
+    <script>
+        function shootEggs() {
+            for (let i = 0; i < 30; i++) { // Number of eggs to shoot
+                const egg = document.createElement('div');
+                egg.className = 'egg';
+                egg.style.top = (Math.random() * window.innerHeight) + 'px';
+                egg.style.left = (Math.random() * window.innerWidth) + 'px';
+                document.body.appendChild(egg);
+
+                // Animate eggs
+                setTimeout(() => {
+                    egg.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px) rotate(${Math.random() * 360}deg)`;
+                    egg.style.opacity = 0;
+                }, 10);
+
+                // Remove eggs after animation
+                setTimeout(() => {
+                    egg.remove();
+                }, 1000);
+            }
+        }
+    </script>
 
 </body>
 </html>
