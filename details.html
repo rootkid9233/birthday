@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width= device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Party Details</title>
     <style>
         body, html {
@@ -15,45 +15,33 @@
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #4B0082;
             text-align: center;
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
-            background-size: cover;
-            position: relative;
         }
-        .spline-container {
+        spline-viewer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-        }
-        spline-viewer {
-            width: 100%;
-            height: 100%;
-            display: block;
-            background: transparent !important;
-            pointer-events: none;
+            z-index: -1; /* Places Spline Viewer behind other content */
         }
         .content {
             position: relative;
-            z-index: 1;
+            z-index: 1; /* Ensures content is on top of the Spline viewer */
             padding: 20px;
-            color: #4B0082;
-            text-align: center;
         }
         .header {
-            padding: 20px;
             background-color: #FF69B4;
-            color: white;
-            text-shadow: 1px 1px 2px #FFD700;
-            margin-bottom: 20px;
-            border-radius: 10px;
+            padding: 20px;
+            border-bottom: 5px solid #FFD700;
         }
         .header h1 {
+            font-size: 3em;
             margin: 0;
+            color: white;
+            text-shadow: 2px 2px 8px #FFD700;
         }
         .details {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.8); /* Adds a slight transparency */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -83,102 +71,14 @@
         .map-links a:hover {
             text-decoration: underline;
         }
-        .sparkles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-            opacity: 0.3;
-            z-index: 0;
-        }
-        .egg-button {
-            position: fixed;
-            bottom: 50px;
-            right: 50px;
-            width: 50px;
-            height: 50px;
-            background: url('https://path-to-your-cute-egg-image.png') no-repeat center;
-            background-size: contain;
-            cursor: pointer;
-            z-index: 2;
-        }
-        .egg {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: url('https://path-to-pastel-egg-image.png') no-repeat center;
-            background-size: contain;
-            pointer-events: none;
-        }
     </style>
 </head>
 <body>
 
+    <!-- Spline Viewer as Background -->
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/t913zFerNxcGnkmH/scene.splinecode"></spline-viewer>
 
-    <div class="spline-container">
-        <spline-viewer url="https://prod.spline.design/uXqmGlnF3qIHoaON/scene.splinecode"></spline-viewer>
-    </div>
-
-    <div class="sparkles"></div>
-
+    <!-- Main Content -->
     <div class="content">
-        <div class="header">
-            <h1>Party Details</h1>
-        </div>
-
-        <div class="details">
-            <h2>Date</h2>
-            <p><strong>Date:</strong> 10/12/2024</p>
-            <h2>Time and Location</h2>
-            <p><strong>Time:</strong> 6:00 PM - 8:00 PM</p>
-            <p><strong>Location:</strong> 273 Woodbury Ave, Martinsburg, WV 25404</p>
-            <div class="map-links">
-                <a href="https://maps.apple.com/?address=273%20Woodbury%20Ave,%20Martinsburg,%20WV%2025404,%20United%20States&auid=14771201852086930263&ll=39.446171,-77.966925&lsp=9902&q=273%20Woodbury%20Ave&_ext=ChgKBQgEEOIBCgQIBRADCgQIBhBvCgQIUhAECgQIVRAOCgQIWRABCgUIpAEQARImKYfTE0lgEFNANXxVn3VCZyOAZgCxpcRgn80kqO1nTCZyQFAE" target="_blank">Apple Maps</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=273+Woodbury+Ave,+Martinsburg,+WV+25404" target="_blank">Google Maps</a>
-            </div>
-            <h2>Food</h2>
-            <p>We will have a variety of delicious snacks and treats, including:</p>
-            <ul>
-                <li>Chicken Salad Chick</li>
-                <li>Fruit Platter</li>
-                <li>Chips and Dip</li>
-                <li>Birthday Cake</li>
-            </ul>
-        </div>
-
-        <div class="footer">
-            <p>Can't wait to see you there!</p>
-        </div>
-    </div>
-
-    <!-- Interactive Egg Button -->
-    <div class="egg-button" onclick="shootEggs()"></div>
-
-    <script>
-        function shootEggs() {
-            for (let i = 0; i < 30; i++) { // Number of eggs to shoot
-                const egg = document.createElement('div');
-                egg.className = 'egg';
-                egg.style.top = (Math.random() * window.innerHeight) + 'px';
-                egg.style.left = (Math.random() * window.innerWidth) + 'px';
-                document.body.appendChild(egg);
-
-                // Animate eggs
-                setTimeout(() => {
-                    egg.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px) rotate(${Math.random() * 360}deg)`;
-                    egg.style.opacity = 0;
-                }, 10);
-
-                // Remove eggs after animation
-                setTimeout(() => {
-                    egg.remove();
-                }, 1000);
-            }
-        }
-    </script>
-
-</body>
-</html>
+        <div class="
