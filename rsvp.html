@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP</title>
     <style>
@@ -80,6 +80,19 @@
             font-size: 1.2em;
             margin-top: 20px;
         }
+        .flash-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: red;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 2em;
+            z-index: 999;
+        }
     </style>
 </head>
 <body>
@@ -107,65 +120,4 @@
         </div>
 
         <div class="thank-you-message" id="thank-you-message">
-            <p>Thanks!!! You're very special to us!</p>
-        </div>
-
-        <div class="footer">
-            <p>RSVP for a delightful time with Hatchimals!</p>
-        </div>
-    </div>
-
-    <!-- JavaScript Code for ClickSend SMS -->
-    <script type="text/javascript">
-        function nextStep(current, next) {
-            document.getElementById(current).style.display = 'none';
-            document.getElementById(next).style.display = 'block';
-        }
-
-        function submitForm() {
-            const name = document.getElementById('name').value;
-            const kids = document.getElementById('kids').value;
-
-            if (!name || !kids) {
-                alert('Please fill in all fields.');
-                return;
-            }
-
-            const messageBody = `New RSVP Received: Name - ${name}, Number of Kids - ${kids}`;
-
-            // ClickSend API credentials
-            const url = 'https://rest.clicksend.com/v3/sms/send';
-            const data = {
-                messages: [
-                    {
-                        source: 'javascript',
-                        from: 'jackie', // Optional: Customize the sender name/number
-                        body: messageBody,
-                        to: '+13302576255' // Replace with your phone number
-                    }
-                ]
-            };
-
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Basic ' + btoa('jwade1994@icloud.com:DA077A8A-5FBE-ABD4-F28C-F6CAD2C66439'), // Replace with your ClickSend username and API key
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('SMS sent successfully:', data);
-                document.getElementById('form-container').style.display = 'none';
-                document.getElementById('thank-you-message').style.display = 'block';
-            })
-            .catch((error) => {
-                console.error('Error sending SMS:', error);
-                alert('An error occurred while sending your RSVP. Please try again.');
-            });
-        }
-    </script>
-
-</body>
-</html>
+            <p>
