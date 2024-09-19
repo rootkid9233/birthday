@@ -11,7 +11,7 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            overflow: hidden; /* Prevents scroll bars */
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #4B0082;
             text-align: center;
@@ -42,6 +42,22 @@
         }
         .container {
             padding: 20px;
+        }
+        .link-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #FF69B4;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .link-button:hover {
+            background-color: #FFB6C1;
+            transform: scale(1.05);
         }
         .footer {
             background-color: #FF69B4;
@@ -84,7 +100,7 @@
         </div>
 
         <div class="container">
-            <!-- You can add more content here if needed -->
+            <a href="https://linktr.ee/lilianafay" class="link-button" target="_blank">Go to Wishlist</a>
         </div>
 
         <div class="footer">
