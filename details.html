@@ -60,10 +60,12 @@
             padding: 10px;
             color: white;
             position: fixed;
-            width: 100%;
+            left: 0; /* Align the footer to the left */
+            width: 100vw; /* Ensure the footer spans the full viewport width */
             bottom: 0;
             border-top: 5px solid #FFD700;
-            border-radius: 10px;
+            border-radius: 0; /* Remove border-radius to align footer fully */
+            box-sizing: border-box; /* Ensure padding and borders are included in width calculations */
         }
         .map-links {
             margin-top: 10px;
