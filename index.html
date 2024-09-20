@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>Party Details</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Prevents scroll bars */
+            overflow: hidden;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #4B0082;
             text-align: center;
@@ -22,19 +22,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Keeps the Spline viewer behind other content */
-            transition: transform 0.3s ease;
+            z-index: -1; /* Places Spline Viewer behind other content */
         }
         spline-viewer {
             width: 100%;
             height: 100%;
-            background: transparent !important;
-            pointer-events: auto; /* Allows interaction with the Spline viewer */
         }
         .content {
             position: relative;
             z-index: 1; /* Ensures content is on top of the Spline viewer */
             padding: 20px;
+            color: #4B0082;
+            text-align: center;
         }
         .header {
             background-color: #FF69B4;
@@ -43,63 +42,82 @@
         }
         .header h1 {
             font-size: 3em;
-            font-size: 3.5em; /* Increased font size */
             margin: 0;
             color: white;
             text-shadow: 2px 2px 8px #FFD700;
-            color: #FFD700; /* Vibrant golden yellow for better visibility */
-            text-shadow: 3px 3px 8px #FF4500; /* Add a stronger shadow for pop */
         }
-        .container {
+        .details {
+            background: rgba(255, 255, 255, 0.8); /* Adds a slight transparency */
             padding: 20px;
-        }
-        .link-button {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: inline-block;
+            text-align: left;
             margin-top: 20px;
-            padding: 10px 20px;
-            padding: 15px 30px;
-            background-color: #CCCCFF; /* Periwinkle color */
-            color: #4B0082;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.5em; /* Larger font size */
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            margin-right: 10px; /* Add some space between buttons */
-        }
-        .link-button:hover {
-            background-color: #FFB6C1;
-        }
-        .celebration-text {
-            font-size: 2.2em; /* Larger text for celebration */
-            color: #FFD700; /* Vibrant color to make it pop */
-            text-shadow: 2px 2px 5px #FF4500; /* Stronger shadow for visibility */
         }
         .footer {
             background-color: #FF69B4;
             padding: 10px;
+            color: white;
+            position: fixed;
+            left: 0; /* Align the footer to the left */
+            width: 100vw; /* Ensure the footer spans the full viewport width */
+            bottom: 0;
+            border-top: 5px solid #FFD700;
+            border-radius: 0; /* Remove border-radius to align footer fully */
+            box-sizing: border-box; /* Ensure padding and borders are included in width calculations */
+        }
+        .map-links {
+            margin-top: 10px;
+        }
+        .map-links a {
+            color: #4B0082;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .map-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Spline Viewer as Background -->
+    <div class="spline-container">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/t913zFerNxcGnkmH/scene.splinecode"></spline-viewer>
+    </div>
+
     <!-- Main Content -->
     <div class="content">
         <div class="header">
-            <h1>Happy Birthday Liliana!!</h1>
-            <h1>Get eggcited! You're Invited!</h1>
+            <h1>Party Details</h1>
         </div>
 
-        <div class="container">
-            <p>You're Invited!!!</p>
-            <p class="celebration-text">Let's celebrate Liliana's 9th birthday</p>
-
-            <!-- Link to Details Page -->
-            <a href="details.html" class="link-button">Details</a>
-            <!-- Link to Wishlist Page -->
-            <a href="https://linktr.ee/lilianafay" class="link-button" target="_blank">Wishlist</a>
-            <!-- Link to RSVP Page -->
-            <a href="rsvp.html" class="link-button">RSVP</a>
+        <div class="details">
+            <h2>Date and Time</h2>
+            <p><strong>Date and Time:</strong> 10/12/2024, 6:00 PM - 8:00 PM</p>
+            <h2>Location</h2>
+            <p><strong>Location:</strong> 273 Woodbury Ave, Martinsburg, WV 25404</p>
+            <div class="map-links">
+                <a href="https://maps.apple.com/?address=273%20Woodbury%20Ave,%20Martinsburg,%20WV%2025404,%20United%20States&auid=14771201852086930263&ll=39.446171,-77.966925&lsp=9902&q=273%20Woodbury%20Ave&_ext=ChgKBQgEEOIBCgQIBRADCgQIBhBvCgQIUhAECgQIVRAOCgQIWRABCgUIpAEQARImKYfTE0lgEFNANXxVn3VCZyOAZgCxpcRgn80kqO1nTCZyQFAE" target="_blank">Apple Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=273+Woodbury+Ave,+Martinsburg,+WV+25404" target="_blank">Google Maps</a>
+            </div>
+            <h2>Food</h2>
+            <p>We will have a variety of delicious snacks and treats, including:</p>
+            <ul>
+                <li>Chicken Salad Chick</li>
+                <li>Fruit Platter</li>
+                <li>Chips and Dip</li>
+                <li>Birthday Cake</li>
+            </ul>
         </div>
 
         <div class="footer">
-            <p>Have a magical birthday with us!</p>
+            <p>Can't wait to see you there!</p>
         </div>
     </div>
+
 </body>
 </html>
