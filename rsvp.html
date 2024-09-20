@@ -118,14 +118,12 @@
 
     <script>
         function nextStep(current, next) {
-            // Ensure input is filled before moving to the next step
             const name = document.getElementById('name').value.trim();
             if (!name) {
                 alert('Please enter your name to continue.');
                 return;
             }
 
-            // Hide the current step and show the next step
             document.getElementById(current).style.display = 'none';
             document.getElementById(next).style.display = 'block';
         }
@@ -134,7 +132,6 @@
             const name = document.getElementById('name').value.trim();
             const kids = document.getElementById('kids').value.trim();
 
-            // Ensure all fields are filled out
             if (!name || !kids) {
                 alert('Please fill in all fields.');
                 return;
@@ -145,9 +142,4 @@
             document.getElementById('thank-you-message').style.display = 'block';
 
             // Log the submission to console (simulate server submission)
-            console.log(`RSVP Received: Name - ${name}, Number of Kids - ${kids}`);
-        }
-    </script>
-
-</body>
-</html>
+            console.log(`RSVP Received: Name - ${name}, Number of Kids - ${ki
