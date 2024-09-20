@@ -22,7 +22,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Keeps the Spline viewer behind other content */
+            z-index: -1;
         }
         spline-viewer {
             width: 100%;
@@ -32,7 +32,7 @@
         }
         .content {
             position: relative;
-            z-index: 1; /* Ensures content is on top of the Spline viewer */
+            z-index: 1;
             padding: 20px;
         }
         .header {
@@ -73,16 +73,16 @@
             left: 0;
             width: 100vw;
             bottom: 0;
+            margin: 0;
             z-index: 2;
         }
 
         /* Floating Eggs Animation */
         .egg {
             position: fixed;
-            bottom: -50px; /* Starts off-screen */
+            bottom: -50px;
             width: 30px;
             height: 40px;
-            background-color: #FFB6C1;
             border-radius: 50% 50% 45% 45%;
             animation: floatEggs 5s ease-in-out forwards;
             opacity: 0;
@@ -104,21 +104,6 @@
                 transform: translateY(-800px) scale(0.5);
                 opacity: 0;
             }
-        }
-
-        /* Egg Button */
-        .egg-button {
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            width: 80px;
-            height: 80px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Egg_icon.svg/1024px-Egg_icon.svg.png') no-repeat center;
-            background-size: contain;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            z-index: 3;
         }
     </style>
 </head>
@@ -152,23 +137,21 @@
         </div>
     </div>
 
-    <!-- Egg Button -->
-    <button class="egg-button" onclick="triggerEggs()" title="Pop some eggs!"></button>
-
+    <!-- JavaScript to Create 100 Floating Eggs -->
     <script>
-        function triggerEggs() {
-            for (let i = 0; i < 100; i++) {
-                const egg = document.createElement('div');
-                egg.classList.add('egg');
-                egg.style.left = Math.random() * 100 + 'vw'; /* Random horizontal position */
-                egg.style.animationDelay = `${i * 0.05}s`; /* Slight delay for each egg */
-                document.body.appendChild(egg);
+        const colors = ['#FFB6C1', '#FFD700', '#E6E0F8', '#ADD8E6', '#98FB98']; // Pastel colors
+        for (let i = 0; i < 100; i++) {
+            const egg = document.createElement('div');
+            egg.classList.add('egg');
+            egg.style.left = Math.random() * 100 + '%'; // Random horizontal position
+            egg.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; // Random color
+            egg.style.animationDelay = Math.random() * 3 + 's'; // Random delay up to 3 seconds
+            document.body.appendChild(egg);
 
-                // Remove egg after animation ends
-                egg.addEventListener('animationend', () => {
-                    egg.remove();
-                });
-            }
+            // Remove egg after animation ends
+            egg.addEventListener('animationend', () => {
+                egg.remove();
+            });
         }
     </script>
 
