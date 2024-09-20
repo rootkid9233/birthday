@@ -55,6 +55,7 @@
             font-size: 1em;
             border-radius: 5px;
             border: 1px solid #FFD700;
+            width: 80%; /* Make sure the input fields are responsive */
         }
         .form-container button {
             background-color: #FF69B4;
@@ -118,20 +119,26 @@
     <!-- JavaScript Code for ClickSend SMS -->
     <script type="text/javascript">
         function nextStep(current, next) {
+            const name = document.getElementById('name').value.trim();
+            if (!name) {
+                alert('Please enter your name to continue.');
+                return;
+            }
+
             document.getElementById(current).style.display = 'none';
             document.getElementById(next).style.display = 'block';
         }
 
         function submitForm() {
-            const name = document.getElementById('name').value;
-            const kids = document.getElementById('kids').value;
+            const name = document.getElementById('name').value.trim();
+            const kids = document.getElementById('kids').value.trim();
 
             if (!name || !kids) {
                 alert('Please fill in all fields.');
                 return;
             }
 
-            const messageBody = New RSVP Received: Name - ${name}, Number of Kids - ${kids};
+            const messageBody = `New RSVP Received: Name - ${name}, Number of Kids - ${kids}`;
 
             // ClickSend API credentials
             const url = 'https://rest.clicksend.com/v3/sms/send';
@@ -168,4 +175,4 @@
     </script>
 
 </body>
-</html> 
+</html>
