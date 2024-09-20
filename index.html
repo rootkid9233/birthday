@@ -4,36 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Party Details</title>
+    <title>Liliana's 9th Birthday!!</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            overflow: hidden; /* Prevents scroll bars */
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #4B0082;
             text-align: center;
         }
-        .spline-container {
+        spline-viewer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Places Spline Viewer behind other content */
-        }
-        spline-viewer {
-            width: 100%;
-            height: 100%;
+            z-index: -2; /* Keep Spline behind everything */
         }
         .content {
             position: relative;
             z-index: 1; /* Ensures content is on top of the Spline viewer */
             padding: 20px;
-            color: #4B0082;
-            text-align: center;
         }
         .header {
             background-color: #FF69B4;
@@ -46,78 +40,77 @@
             color: white;
             text-shadow: 2px 2px 8px #FFD700;
         }
-        .details {
-            background: rgba(255, 255, 255, 0.8); /* Adds a slight transparency */
+        .container {
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            text-align: left;
+        }
+        .link-button {
             margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #FF69B4;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .link-button:hover {
+            background-color: #FFB6C1;
+            transform: scale(1.05);
         }
         .footer {
             background-color: #FF69B4;
             padding: 10px;
+            border-top: 5px solid #FFD700;
             color: white;
             position: fixed;
-            left: 0; /* Align the footer to the left */
-            width: 100vw; /* Ensure the footer spans the full viewport width */
+            left: 0; /* Aligns the footer to the left */
+            width: 100vw; /* Ensures the footer spans the full viewport width */
             bottom: 0;
-            border-top: 5px solid #FFD700;
-            border-radius: 0; /* Remove border-radius to align footer fully */
-            box-sizing: border-box; /* Ensure padding and borders are included in width calculations */
         }
-        .map-links {
-            margin-top: 10px;
+        .footer p {
+            font-size: 1.5em;
+            margin: 0;
         }
-        .map-links a {
-            color: #4B0082;
-            text-decoration: none;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        .map-links a:hover {
-            text-decoration: underline;
+        .egg-button {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Egg_icon.svg/1024px-Egg_icon.svg.png') no-repeat center;
+            background-size: contain;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            z-index: 3; /* Keep the button above everything */
         }
     </style>
 </head>
 <body>
 
     <!-- Spline Viewer as Background -->
-    <div class="spline-container">
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/t913zFerNxcGnkmH/scene.splinecode"></spline-viewer>
-    </div>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.25/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/t913zFerNxcGnkmH/scene.splinecode"></spline-viewer>
 
     <!-- Main Content -->
     <div class="content">
         <div class="header">
-            <h1>Party Details</h1>
+            <h1>Happy Birthday Liliana!!</h1>
         </div>
 
-        <div class="details">
-            <h2>Date and Time</h2>
-            <p><strong>Date and Time:</strong> 10/12/2024, 6:00 PM - 8:00 PM</p>
-            <h2>Location</h2>
-            <p><strong>Location:</strong> 273 Woodbury Ave, Martinsburg, WV 25404</p>
-            <div class="map-links">
-                <a href="https://maps.apple.com/?address=273%20Woodbury%20Ave,%20Martinsburg,%20WV%2025404,%20United%20States&auid=14771201852086930263&ll=39.446171,-77.966925&lsp=9902&q=273%20Woodbury%20Ave&_ext=ChgKBQgEEOIBCgQIBRADCgQIBhBvCgQIUhAECgQIVRAOCgQIWRABCgUIpAEQARImKYfTE0lgEFNANXxVn3VCZyOAZgCxpcRgn80kqO1nTCZyQFAE" target="_blank">Apple Maps</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=273+Woodbury+Ave,+Martinsburg,+WV+25404" target="_blank">Google Maps</a>
-            </div>
-            <h2>Food</h2>
-            <p>We will have a variety of delicious snacks and treats, including:</p>
-            <ul>
-                <li>Chicken Salad Chick</li>
-                <li>Fruit Platter</li>
-                <li>Chips and Dip</li>
-                <li>Birthday Cake</li>
-            </ul>
+        <div class="container">
+            <a href="https://linktr.ee/lilianafay" class="link-button" target="_blank">Go to Wishlist</a>
         </div>
 
         <div class="footer">
-            <p>Can't wait to see you there!</p>
+            <p>Gifts are appreciated but your presence is more important!</p>
         </div>
     </div>
+
+    <!-- Cute Egg Button -->
+    <button class="egg-button" onclick="window.open('https://linktr.ee/lilianafay', '_blank')" title="Wishlist"></button>
 
 </body>
 </html>
