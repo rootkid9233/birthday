@@ -55,7 +55,6 @@
             font-size: 1em;
             border-radius: 5px;
             border: 1px solid #FFD700;
-            width: 80%; /* Adjust width to ensure it's easy to interact */
         }
         .form-container button {
             background-color: #FF69B4;
@@ -116,30 +115,57 @@
         </div>
     </div>
 
-    <script>
+    <!-- JavaScript Code for ClickSend SMS -->
+    <script type="text/javascript">
         function nextStep(current, next) {
-            const name = document.getElementById('name').value.trim();
-            if (!name) {
-                alert('Please enter your name to continue.');
-                return;
-            }
-
             document.getElementById(current).style.display = 'none';
             document.getElementById(next).style.display = 'block';
         }
 
         function submitForm() {
-            const name = document.getElementById('name').value.trim();
-            const kids = document.getElementById('kids').value.trim();
+            const name = document.getElementById('name').value;
+            const kids = document.getElementById('kids').value;
 
             if (!name || !kids) {
                 alert('Please fill in all fields.');
                 return;
             }
 
-            // Display the thank-you message and hide the form
-            document.getElementById('form-container').style.display = 'none';
-            document.getElementById('thank-you-message').style.display = 'block';
+            const messageBody = New RSVP Received: Name - ${name}, Number of Kids - ${kids};
 
-            // Log the submission to console (simulate server submission)
-            console.log(`RSVP Received: Name - ${name}, Number of Kids - ${ki
+            // ClickSend API credentials
+            const url = 'https://rest.clicksend.com/v3/sms/send';
+            const data = {
+                messages: [
+                    {
+                        source: 'javascript',
+                        from: 'jackie', // Optional: Customize the sender name/number
+                        body: messageBody,
+                        to: '+13302576255' // Replace with your phone number
+                    }
+                ]
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('jwade1994@icloud.com:DA077A8A-5FBE-ABD4-F28C-F6CAD2C66439'), // Replace with your ClickSend username and API key
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('SMS sent successfully:', data);
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('thank-you-message').style.display = 'block';
+            })
+            .catch((error) => {
+                console.error('Error sending SMS:', error);
+                alert('An error occurred while sending your RSVP. Please try again.');
+            });
+        }
+    </script>
+
+</body>
+</html> 
